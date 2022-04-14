@@ -1,4 +1,9 @@
 require('dotenv').config();
 module.exports = {
-    //Complete with DB Config
+    database: {
+        mongodb: {
+            connectionString: process.env.CONNECTION_STRING,
+            password: process.env.PW_DB,
+        }
+    }
 }
