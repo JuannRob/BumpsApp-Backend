@@ -11,9 +11,9 @@ const mongoConnectionString = (config.get('database.mongodb.connectionString'))
 mongoose.connect(mongoConnectionString,
     {
         useNewUrlParser: true,
-        useUnifiedTopology: true    
+        useUnifiedTopology: true
     }
-).then(() => console.log('connected to MONGODB')).catch((err) => {throw(err)});
+).then(() => console.log('connected to MONGODB')).catch((err) => { throw (err) });
 
 const app = express();
 
@@ -23,6 +23,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/baches', Router);
+app.use('/', Router);
 
 module.exports = app;
