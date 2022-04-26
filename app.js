@@ -4,7 +4,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 require('dotenv').config();
 const config = require("config");
-const Router = require('./src/routes/baches');
+const Router = require('./src/routes/bumps');
 const mongoose = require("mongoose");
 
 const mongoConnectionString = (config.get('database.mongodb.connectionString'))

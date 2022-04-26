@@ -1,40 +1,40 @@
-const bacheSchema = require('../schemas/bache.schema');
+const bumpSchema = require('../schemas/bump.schema');
 const Joi = require('joi');
-const Bache = require('../models/bache.model');
+const Bump = require('../models/bump.model');
 
-async function getBaches(req, res) {
-    Bache.find({}, (err, baches) => {
+async function getBumps(req, res) {
+    Bump.find({}, (err, bumps) => {
         if (err) {
             res.send(err);
         } else {
             res.send({
-                "baches": baches
+                "bumps": bumps
             });
         }
     })
 }
 
-async function getBacheById(req, res) {
-    const bacheId = req.params.id;
-    console.log("ID: "+bacheId)
-    Bache.findById(bacheId, (err, bache) => {
+async function getBumpById(req, res) {
+    const bumpId = req.params.id;
+    console.log("ID: " + bumpId)
+    Bump.findById(bumpId, (err, bump) => {
         if (err) {
             res.send(err);
         }
         else {
             res.send({
-                "Bache": bache
+                "Bump": bump
             });
         }
     });
 }
 
-async function createBache(req, res) {
+async function createBump(req, res) {
     const data = req.body;
     try {
-        Joi.assert(data, bacheSchema);
-        const bache = new Bache(data);
-        await bache.save();
+        Joi.assert(data, bumpSchema);
+        const bump = new Bump(data);
+        await bump.save();
         res.status(200).json({
             message: 'everything ok',
         });
@@ -49,36 +49,36 @@ async function createBache(req, res) {
     }
 }
 
-async function deleteBacheById(req, res) {
-    const bacheId = req.params.id;
-    console.log("ID: "+bacheId)
-    Bache.findByIdAndDelete(bacheId, (err, bache) => {
+async function deleteBumpById(req, res) {
+    const bumpId = req.params.id;
+    console.log("ID: " + bumpId)
+    Bump.findByIdAndDelete(bumpId, (err, bump) => {
         if (err) {
             res.send(err);
         }
         else {
             res.send({
-                "Deleted": bache
+                "Deleted": bump
             });
         }
     });
 }
 
-async function editBacheById(req, res) {
+async function editBumpById(req, res) {
     const data = req.body;
-    const bacheId = req.params.id;
-    console.log("ID: "+bacheId)
-    console.log({"Datos previos":data})
+    const bumpId = req.params.id;
+    console.log("ID: " + bumpId)
+    console.log({ "Previous data ": data })
 
     try {
-        Joi.assert(data, bacheSchema);
-        Bache.findByIdAndUpdate(bacheId, data, {returnOriginal: false}, (err1, bache) => {
+        Joi.assert(data, bumpSchema);
+        Bump.findByIdAndUpdate(bumpId, data, { returnOriginal: false }, (err1, bump) => {
             if (err1) {
                 res.send(err1);
             }
             else {
                 res.send({
-                    "Edited": bache
+                    "Edited ": bump
                 });
             }
         });
@@ -93,13 +93,13 @@ async function editBacheById(req, res) {
         res.status(400).json(error)
     }
 
-    
+
 }
 
 module.exports = {
-    getBaches,
-    getBacheById,
-    createBache,
-    deleteBacheById,
-    editBacheById,
+    getBumps,
+    getBumpById,
+    createBump,
+    deleteBumpById,
+    editBumpById,
 }

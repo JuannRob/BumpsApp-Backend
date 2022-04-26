@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const BacheSchema = new Schema({
+const BumpSchema = new Schema({
     imagenUrl: {
         type: String,
         required: true,
@@ -31,6 +31,6 @@ const BacheSchema = new Schema({
     },
 })
 
-const Bache = mongoose.model("Bache", BacheSchema);
+const Bump = mongoose.model("Bump", BumpSchema);
 
-module.exports = Bache;
+module.exports = Bump;

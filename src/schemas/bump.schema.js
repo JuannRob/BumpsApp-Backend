@@ -1,6 +1,6 @@
 const Joi = require('joi');
 
-const bacheSchema = Joi.object({
+const bumpSchema = Joi.object({
     imagenUrl: Joi.string().required(),
     latitud: Joi.string().required(),
     longitud: Joi.string().required(),
@@ -10,4 +10,4 @@ const bacheSchema = Joi.object({
     fechaReparacion: Joi.date().iso(),
 })
 
-module.exports = bacheSchema;
+module.exports = bumpSchema;
