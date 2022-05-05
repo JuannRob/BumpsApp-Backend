@@ -1,36 +1,40 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const BacheSchema = new Schema({
-    imagenUrl: {
+const BumpSchema = new Schema({
+    imageUrl: {
         type: String,
         required: true,
     },
-    latitud: {
+    latitude: {
         type: String,
         required: true,
     },
-    longitud: {
+    longitude: {
         type: String,
         required: true,
     },
-    relevancia: {
+    zone: {
         type: String,
         required: true,
     },
-    estado: {
+    relevance: {
         type: String,
         required: true,
     },
-    fechaIngreso: {
+    status: {
+        type: String,
+        required: true,
+    },
+    entryDate: {
         type: Date,
         required: true,
     },
-    fechaReparacion: {
+    repairDate: {
         type: Date,
     },
 })
 
-const Bache = mongoose.model("Bache", BacheSchema);
+const Bump = mongoose.model("Bump", BumpSchema);
 
-module.exports = Bache;
+module.exports = Bump;
