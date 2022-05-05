@@ -2,31 +2,35 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const BumpSchema = new Schema({
-    imagenUrl: {
+    imageUrl: {
         type: String,
         required: true,
     },
-    latitud: {
+    latitude: {
         type: String,
         required: true,
     },
-    longitud: {
+    longitude: {
         type: String,
         required: true,
     },
-    relevancia: {
+    zone: {
         type: String,
         required: true,
     },
-    estado: {
+    relevance: {
         type: String,
         required: true,
     },
-    fechaIngreso: {
+    status: {
+        type: String,
+        required: true,
+    },
+    entryDate: {
         type: Date,
         required: true,
     },
-    fechaReparacion: {
+    repairDate: {
         type: Date,
     },
 })

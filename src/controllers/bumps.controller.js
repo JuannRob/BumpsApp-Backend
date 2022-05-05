@@ -7,9 +7,7 @@ async function getBumps(req, res) {
         if (err) {
             res.send(err);
         } else {
-            res.send({
-                "bumps": bumps
-            });
+            res.send(bumps);
         }
     })
 }
@@ -17,26 +15,26 @@ async function getBumps(req, res) {
 async function getBumpById(req, res) {
     const bumpId = req.params.id;
     console.log("ID: " + bumpId)
+
     Bump.findById(bumpId, (err, bump) => {
         if (err) {
             res.send(err);
         }
         else {
-            res.send({
-                "Bump": bump
-            });
+            res.send(bump);
         }
     });
 }
 
 async function createBump(req, res) {
     const data = req.body;
+
     try {
         Joi.assert(data, bumpSchema);
         const bump = new Bump(data);
         await bump.save();
         res.status(200).json({
-            message: 'everything ok',
+            message: 'bump created',
         });
     } catch (err) {
         const error = new Error();
@@ -52,14 +50,13 @@ async function createBump(req, res) {
 async function deleteBumpById(req, res) {
     const bumpId = req.params.id;
     console.log("ID: " + bumpId)
+
     Bump.findByIdAndDelete(bumpId, (err, bump) => {
         if (err) {
             res.send(err);
         }
         else {
-            res.send({
-                "Deleted": bump
-            });
+            res.send(bump);
         }
     });
 }
@@ -77,9 +74,7 @@ async function editBumpById(req, res) {
                 res.send(err1);
             }
             else {
-                res.send({
-                    "Edited ": bump
-                });
+                res.send(bump);
             }
         });
     } catch (err2) {
@@ -92,8 +87,6 @@ async function editBumpById(req, res) {
         })
         res.status(400).json(error)
     }
-
-
 }
 
 module.exports = {
